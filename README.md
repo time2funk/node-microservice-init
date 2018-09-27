@@ -1,2 +1,2 @@
 # node-microservice-init
-Node.js, Redis, clusters, zmq
+Node.js, React.js, Redis, clusters, zmq

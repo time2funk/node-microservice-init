@@ -8,20 +8,6 @@ const Server = require('../src').Server;
 const Redis = require('../src').Redis;
 const cleanup = require('../src').cleanup;
 
-// const util = require('util');
-// const events = require('events');
-// const emiter = new events.EventEmitter();
-// const Tmp = class {
-//     constructor(){
-//         this.on('msg', msg => {
-//             console.log('Tmp: ' + msg);
-//         });
-//     }
-// }
-// util.inherits(Server, events);
-// util.inherits(Tmp, events);
-// util.inherits(Redis);
-
 // Node Clustering
 if (numCPUs < 2) throw new Error(' [ Master ] there are less then 2 cpu`s');
 else if (cluster.isMaster) {
@@ -48,19 +34,9 @@ else if (cluster.isMaster) {
     } else {
         console.log(`[ Worker:${process.env.ROLE} ] [${process.pid}] is running`);
         
-        // const com = process.env.COM;
-        // if (!com) throw new Error(`[ Worker ] no comunication socket specified`);
-
-        // console.log(typeof com, com);
-        // let r = com.receiver();
-        // r.
-        
         switch (process.env.ROLE) {
             case "SERVER":
                 const server = new Server(config.server);
-                // server.emit('msg', 'hi');
-                // const tmp = new Tmp();
-                // tmp.emit('msg', 'halo');
                 break;
             case "REDIS":
                 const redis = new Redis(config.redis);
